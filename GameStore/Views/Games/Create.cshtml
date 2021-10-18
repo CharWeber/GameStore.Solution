@@ -1,0 +1,15 @@
+@{
+  Layout = "_Layout";
+}
+
+@model GameStore.Models.Game
+
+@using (Html.BeginForm())
+{
+
+  @Html.LabelFor(model => model.Name)
+  @Html.TextBoxFor(model => model.Name)
+
+  <input type = 'submit' value="Add Game"/>
+}
+<p>@Html.ActionLink("Back", "Index", "Game")</p>

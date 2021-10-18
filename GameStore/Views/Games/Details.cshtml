@@ -1,0 +1,53 @@
+@{
+  Layout = "_Layout";
+}
+
+@model GameStore.Models.Game;
+
+<h3>Game Details</h3>
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+
+@if(Model.JoinEntities.Count == 0)
+{
+  <p>This game has no users.</p>
+}
+else
+{
+  <h4>Users who own this game</h4>
+  <ul>
+    @foreach(var join in Model.JoinEntities)
+    {
+      <li>@join.User.Name</li>
+      @using(Html.BeginForm("DeleteUser", "Games"))
+      {
+        @Html.Hidden("joinId", @join.GameUserId)
+        <input type = "submit" value = "Delete" class = "btn btn-dark">
+      }
+    }
+  </ul>
+}
+
+@if(ViewBag.NoUsers)
+{
+  <h2>there are no gamers here right now</h2>
+}
+else
+{
+  <p>Add this Game to a WishList</p>
+  @using (Html.BeginForm("AddUser", "Games"))
+  {
+    @Html.HiddenFor(model => model.GameId)
+
+    @Html.Label("Add User")
+    @Html.DropDownList("UserId")
+
+    <input type="submit" value="save"/>
+  }
+
+}
+
+<p class = "btn btn-outline-dark">@Html.ActionLink("Add a game", "Create")</p>
+<p class = "btn btn-outline-dark">@Html.ActionLink("Edit game", "Edit", new {id = Model.GameId})</p>
+<p class = "btn btn-outline-dark">@Html.ActionLink("Delete game", "Delete", new {id = Model.GameId})</p>
+<p class = "btn btn-outline-dark">@Html.ActionLink("View gamers", "Index", "Users")</p>
+<p class = "btn btn-outline-dark">@Html.ActionLink("Home", "Index", "Home")</p>

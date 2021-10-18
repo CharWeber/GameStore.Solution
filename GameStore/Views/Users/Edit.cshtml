@@ -1,0 +1,17 @@
+@{
+  Layout = "_Layout";
+}
+
+@model GameStore.Models.User
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.UserId)
+
+  @Html.LabelFor(model => model.Name)
+  @Html.EditorFor(model => model.Name)
+
+  <input type="submit" value="Edit User">
+}
+
+<p>@Html.ActionLink("Back", "Index", "Users")</p>

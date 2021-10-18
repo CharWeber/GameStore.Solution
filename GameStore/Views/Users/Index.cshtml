@@ -1,0 +1,25 @@
+@{
+  Layout = "_Layout";
+}
+
+@using GameStore.Models;
+
+<div class = "jumbotron jumbotron-fluid">
+  <h1>Fellow Gamers</h1>
+  <h3>Did you remember you can turn in your games for in store credit?</h3>
+</div>
+
+@if (Model.Count == 0)
+{
+  <h3>No games in stock!</h3>
+}
+
+<ul>
+  @foreach(User user in Model)
+  {
+    <li>@Html.ActionLink($"{user.Name}", "Details", new{id=user.UserId})</li>
+  }
+</ul>
+
+<p class = "btn btn-outline-dark">@Html.ActionLink("Add a user", "Create")</p>
+<p class = "btn btn-outline-dark">@Html.ActionLink("Home", "Index", "Home")</p>
