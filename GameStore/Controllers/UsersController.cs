@@ -10,11 +10,11 @@ using GameStore.Models;
 
 namespace GameStore.Controllers
 {
-  public class UserController : Controller
+  public class UsersController : Controller
   {
     private readonly GameStoreContext _db;
 
-    public UserController(GameStoreContext db)
+    public UsersController(GameStoreContext db)
     {
       _db = db;
     }
