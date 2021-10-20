@@ -4,6 +4,7 @@ namespace GameStore.ViewModels
 {
     public class RegisterViewModel
     {
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

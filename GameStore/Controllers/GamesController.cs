@@ -23,7 +23,6 @@ namespace GameStore.Controllers
       _userManager = userManager;
       _db = db;
     }
-
     public ActionResult Index()
     {
         return View(_db.Games.ToList());

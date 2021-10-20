@@ -1,28 +1,35 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
-
+using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
 using GameStore.Models;
+using GameStore.ViewModels;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace GameStore.Controllers
 {
+  [Authorize]
   public class UsersController : Controller
   {
     private readonly GameStoreContext _db;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public UsersController(GameStoreContext db)
+    public UsersController(UserManager <ApplicationUser> userManager, GameStoreContext db)
     {
       _db = db;
+      _userManager = userManager;
     }
 
     public ActionResult Index()
     {
-      List<User> model = _db.Users.ToList();
-      return View(model);
+      // List<User> model = _db.Users.ToList();
+      var Users = _userManager.Users.ToList();
+      return View(Users);
     }
 
     public ActionResult Create()
