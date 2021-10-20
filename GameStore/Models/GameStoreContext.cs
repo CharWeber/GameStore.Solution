@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GameStore.Models
 {
-  public class GameStoreContext : DbContext
+  public class GameStoreContext : IdentityDbContext<ApplicationUser>
   {
     public DbSet<Game> Games { get; set; }
     public DbSet<User> Users { get; set; }

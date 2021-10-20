@@ -12,6 +12,7 @@ namespace GameStore.Models
 
     public int GameId {get;set;}
     public string Name {get;set;}
+    public virtual ApplicationUser User {get;set;}
     public virtual ICollection<GameUser> JoinEntities {get;set;}
   }
 }

@@ -1,6 +1,7 @@
 @{
   Layout = "_Layout";
 }
+@using System.Security.Claims
 
 <div class = "container">
 <h1>Welcome to GameStore</h1>
@@ -10,3 +11,12 @@
 
 <p class = "btn btn-outline-dark">@Html.ActionLink("See available games", "Index", "Games")</p>
 <p class = "btn btn-outline-dark">@Html.ActionLink("View users", "Index", "Users")</p>
+@if (User.Identity.IsAuthenticated)
+{
+<p>@Html.ActionLink("View Account Details", "Index", "Account")</p>
+}
+else
+{
+<p>@Html.ActionLink("Create an account", "Register", "Account")</p>
+<p>@Html.ActionLink("Log in", "Login", "Account")</p>
+}

@@ -10,6 +10,11 @@
   @Html.LabelFor(model => model.Name)
   @Html.TextBoxFor(model => model.Name)
 
+
+  @Html.Label("Add User")
+  @Html.DropDownList("UserId")
+
+
   <input type = 'submit' value="Add Game"/>
 }
-<p>@Html.ActionLink("Back", "Index", "Game")</p>
+<p>@Html.ActionLink("Back", "Index")</p>

@@ -13,7 +13,7 @@
 }
 else
 {
-  <h4>Games on this user's Wishlist</h4>
+  <h4>Games in this users library</h4>
   <ul>
     @foreach(var join in Model.JoinEntities)
     {
@@ -27,22 +27,5 @@ else
   </ul>
 }
 
-@if(ViewBag.NoGames)
-{
-  <h2>there are no games available</h2>
-}
-else
-{
-  <p>Add a game to this user's wishlist</p>
-  @using (Html.BeginForm("AddGame", "Users"))
-  {
-    @Html.HiddenFor(model => model.UserId)
 
-    @Html.Label("Add Game")
-    @Html.DropDownList("GameId")
-
-    <input type="submit" value="save"/>
-  }
-
-}
 <p>@Html.ActionLink("Back", "Index", "Users")</p>

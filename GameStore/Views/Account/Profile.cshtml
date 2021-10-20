@@ -1,0 +1,14 @@
+@{
+  Layout = "_Layout";
+}
+
+@using GameStore.Models
+@model IEnumerable<GameStore.Models.Game>
+
+<h1> games in @ViewBag.CurrentUser's library</h1>
+
+@foreach (Game game in Model)
+{
+  <p>@game.Name</p>
+}
+<p>@Html.ActionLink("Back", "Index", "Account")</p>
